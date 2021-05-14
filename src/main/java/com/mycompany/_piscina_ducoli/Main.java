@@ -17,12 +17,14 @@ public class Main
     {
         int sceltaUtente =-1;
         Scanner tastiera= new Scanner(System.in);
-        String[] vociMenu= new String[4];
+        String[] vociMenu= new String[5];
         
         vociMenu[0] = "Esci";
         vociMenu[1] = "Aggiungi cliente";
         vociMenu[2] = "Visualizza clienti presenti";
         vociMenu[3] = "Memorizza l'uscita di un cliente";
-     
+        vociMenu[4] = "visualizza i clienti presenti ad una determinata data e ora";
+        
+        
     }
 }
