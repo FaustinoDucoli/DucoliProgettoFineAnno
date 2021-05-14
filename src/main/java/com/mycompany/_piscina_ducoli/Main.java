@@ -25,6 +25,32 @@ public class Main
         vociMenu[3] = "Memorizza l'uscita di un cliente";
         vociMenu[4] = "visualizza i clienti presenti ad una determinata data e ora";
         
-        
+        Menu menu= new Menu(vociMenu);
+        /*
+        switch(sceltaUtente)
+        {
+            case 0:
+            {
+                System.out.println("L'applicazione terminerà");
+                 break;
+            }
+            case 1:
+            {
+                
+            }
+            case 2:
+            {
+                
+            }
+            case 3:
+            {
+                
+            }
+            case 4:
+            {
+                
+            }
+        }
+        */
     }
 }

@@ -11,5 +11,16 @@ package com.mycompany._piscina_ducoli;
  */
 public class Piscina 
 {
+    private Accessi[] elencoAccessi;
+    private final int N_MAX_ACCESSI=5;
+    public Piscina()
+    {
+        elencoAccessi= new Accessi[N_MAX_ACCESSI];
+    }
+    
+    public void aggiungiCliente()
+    {
+        
+    }
     
 }
