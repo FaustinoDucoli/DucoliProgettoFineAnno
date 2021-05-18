@@ -19,6 +19,8 @@ public class Accessi
     private LocalDateTime dataIngresso;
     private LocalDateTime dataUscita;
     private int corsiaPiscina;
+    private LocalDateTime oraIngresso;
+    private LocalDateTime oraUscita;
     private final int N_MAX_CORSIE=5;
 
     public Accessi(int codiceID, String nome, String Cognome)
@@ -36,6 +38,15 @@ public class Accessi
         this.nome=a1.getNome();
         this.dataIngresso=a1.getDataIngresso();
         this.dataUscita=a1.getDataUscita();
+    }
+    
+    public Accessi()
+    {
+        codiceID=0;
+        nome= "";
+        Cognome="";
+        
+        
     }
 
     public int getCodiceID() 
@@ -73,6 +84,17 @@ public class Accessi
         return N_MAX_CORSIE;
     }
 
+    public LocalDateTime getOraIngresso() 
+    {
+        return oraIngresso;
+    }
+
+    public LocalDateTime getOraUscita() 
+    {
+        return oraUscita;
+    }
+    
+
     public void setCodiceID(int codiceID) 
     {
         this.codiceID = codiceID;
@@ -102,11 +124,22 @@ public class Accessi
     {
         this.corsiaPiscina = corsiaPiscina;
     }
+
+    public void setOraIngresso(LocalDateTime oraIngresso) 
+    {
+        this.oraIngresso = oraIngresso;
+    }
+
+    public void setOraUscita(LocalDateTime oraUscita) 
+    {
+        this.oraUscita = oraUscita;
+    }
+    
     
     public String toString()
     {
         String s="";
-        s+="codice--> "+getCodiceID()+" cognome--> "+getCognome()+" nome--> "+getNome()+" data ingresso--> "+getDataIngresso();
+        s+="codice--> "+getCodiceID()+" cognome--> "+getCognome()+" nome--> "+getNome()+" data ingresso--> "+getDataIngresso()+" ora di accesso--> "+getOraIngresso();
         if(getDataUscita()!=null)
             System.out.print("data di uscita--> " +getDataUscita());
         

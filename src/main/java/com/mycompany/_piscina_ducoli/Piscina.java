@@ -5,6 +5,8 @@
  */
 package com.mycompany._piscina_ducoli;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author FaustinoDucoli
@@ -18,9 +20,20 @@ public class Piscina
         elencoAccessi= new Accessi[N_MAX_ACCESSI];
     }
     
-    public void aggiungiCliente()
+    public int aggiungiCliente(Accessi a1)
     {
+        for(int i=0;i<elencoAccessi.length;i++)
+        {
+            if(elencoAccessi[i]==null)
+            {
+                elencoAccessi[i]=new Accessi(a1);
+                return 0;
+            }
+            
+        }
+        return -1;
         
     }
+   
     
 }

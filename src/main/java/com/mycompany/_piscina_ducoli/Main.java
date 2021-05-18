@@ -26,7 +26,7 @@ public class Main
         vociMenu[4] = "visualizza i clienti presenti ad una determinata data e ora";
         
         Menu menu= new Menu(vociMenu);
-        /*
+        
         switch(sceltaUtente)
         {
             case 0:
@@ -36,6 +36,10 @@ public class Main
             }
             case 1:
             {
+                Accessi a1=new Accessi();
+                System.out.println("nome Cliente--> ");
+                a1.setNome(tastiera.nextLine());
+                
                 
             }
             case 2:
@@ -51,6 +55,6 @@ public class Main
                 
             }
         }
-        */
+        
     }
 }
