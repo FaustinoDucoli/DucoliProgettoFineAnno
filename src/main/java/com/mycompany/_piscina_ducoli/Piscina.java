@@ -34,6 +34,15 @@ public class Piscina
         return -1;
         
     }
-   
+    public void visualizzaClienti()
+    {
+        for(int i=0;i<elencoAccessi.length;i++)
+        {
+            if(elencoAccessi[i]!=null)
+            {
+                System.out.println(elencoAccessi.toString());
+            }
+        }
+    }
     
 }
