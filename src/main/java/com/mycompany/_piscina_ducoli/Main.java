@@ -5,6 +5,8 @@
  */
 package com.mycompany._piscina_ducoli;
 
+import eccezioni.EccezionePosizioneNonValida;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -22,16 +24,253 @@ public class Main
         Piscina p1=new Piscina();
         int nCorsieOccupate=0;
         Scanner tastiera= new Scanner(System.in);
-        String[] vociMenu= new String[5];
-        
-        
+        String[] vociMenu= new String[7];
         vociMenu[0] = "Esci";
-        vociMenu[1] = "Aggiungi cliente";
-        vociMenu[2] = "Visualizza clienti presenti";
-        vociMenu[3] = "Memorizza l'uscita di un cliente";
-        vociMenu[4] = "visualizza i clienti presenti ad una determinata data e ora";
+        vociMenu[1] = "Aggiungi un cliente";
+        vociMenu[2] = "Visualizza Clienti";
+        vociMenu[3] = "Rimuovi cliente";
+        vociMenu[4] = "Visualizza elenco clienti in ordine alfabetico";
+        vociMenu[5] = "Esporta libri in formato csv";
+        vociMenu[6] = "Salva dati";
         
         Menu menu= new Menu(vociMenu);
+        /*
+        //deserializzazione
+        
+        try 
+        {
+            
+            p1=p1.caricaPiscina(nomeFileBinario);
+            System.out.println("Dati caricati correttamente");
+        }
+        catch (IOException ex) 
+        {
+            System.out.println("Impossibile accedere al file. I dati non sono stati caricati");
+        }
+        catch (FileExeption ex) 
+        {
+            System.out.println("Errore di lettura dal file. I dati non sono stati caricati");
+        }
+        
+        do
+        {
+            try
+            {
+                 sceltaUtente=menu.sceltaMenu();
+            switch(sceltaUtente)
+            {
+                case 0:
+                {
+                    System.out.println("L'applicazione terminerà");
+                    break;
+                }
+                case 1:
+                {
+                    
+                    Accessi a= new Accessi();
+                    int esitoOK;
+                    System.out.println("nome--> ");
+                    a.setNome(tastiera.nextLine());
+                    System.out.println("cognome--> ");
+                    a.setCognome(tastiera.nextLine());
+                    a.setDataIngresso(LocalDate.now());
+                    a.setOraIngresso(LocalTime.now());
+                   nCorsieOccupate++;
+                   esitoOK=p1.aggiungiCliente(a);
+                   if(esitoOK==0)
+                       System.out.println("aggiunta avvenuta correttamente.");
+                   else
+                       System.out.println("cliente non registrato correttamente.");
+
+
+                    
+                    try
+                    {
+                          a.setAccessi(a);
+                          System.out.println("inserimento avvenuto correttamente!");
+                    }
+                    catch(EccezionePosizioneNonValida e1)
+                    {
+                        System.out.println(e1.toString());
+                    }
+                     
+                    
+                   
+                    
+                   
+                    System.out.println("premi un pulsante per continuare.!");
+                    tastiera.nextLine();
+                    break;
+                }
+                 case 2:
+                {
+                   p1.visualizzaClienti();
+        
+                    break;
+                }
+                 case 3:
+                {
+                    //elimina libro
+                    System.out.println("ripiano [1..4]-->");
+                    ripiano = tastiera.nextInt();
+                    System.out.println("posizione [1..14]-->");
+                    posizione = tastiera.nextInt();
+                    try
+                    {
+                        s1.rimuoviLibro(ripiano, posizione);
+                        System.out.println("libro eliminato correttamente");
+                    }
+                    catch(EccezionePosizioneNonValida e1)
+                    {
+                        System.out.println(e1.toString());
+                    }
+                     catch(EccezionePosizioneVuota e2)
+                    {
+                        System.out.println(e2.toString());       
+                    }
+                    
+                    
+                   
+                    System.out.println("premi un pulsante per continuare.");
+                    tastiera.nextLine();
+                    break;
+                
+                    
+                        
+                }
+                 case 4:
+                {
+                    //cerca libro in base  ad Autore
+                    String[] elencoTitoli;
+                    String autore;
+                    System.out.println("Autore-->");
+                    autore = tastiera.nextLine();
+                    try
+                    {
+                        elencoTitoli = s1.elencoTitoliAutore(autore);
+                         if (elencoTitoli == null)
+                        System.out.println("nessun libro di "+autore);
+                    else
+                    {
+                        for (int i=0;i<elencoTitoli.length;i++)
+                             System.out.println(elencoTitoli[i]);
+                    }
+                    }
+                    catch(EccezionePosizioneNonValida e1)
+                    {
+                        System.out.println(e1.toString());
+                    }
+                    
+                   
+                    System.out.println("premi un pulsante per continuare.");
+                    tastiera.nextLine();
+                    break;
+                }
+                 case 5:
+                {
+                    System.out.println(s1.toString()); 
+                    System.out.println("premi un pulsante per continuare.");
+                    tastiera.nextLine();
+                    break;
+                }
+                 case 6:
+                 {
+                     try
+                     {
+                         System.out.println(s1.elencoAlfabeticoLibri());
+                     }
+                     catch(EccezionePosizioneNonValida e1)
+                     {
+                         System.out.println(e1.toString());
+                     }
+                     
+                     break;
+                 }
+                 case 7:
+                 {
+                     Libro[] elencoLibri;
+                     try
+                     {
+                         elencoLibri=s1.elencoLibriOrdinatiPrezzo();
+                     for(int i=0;i<elencoLibri.length;i++)
+                     {
+                         System.out.println(elencoLibri[i].toString() +" € " + elencoLibri[i].prezzo());
+                     }
+                     }
+                     catch(EccezionePosizioneNonValida e1)
+                     {
+                         System.out.println(e1.toString());
+                     }
+                     
+                     break;
+                 }
+                 case 8:
+                 {
+                     Libro[] elencoLibri;
+                     try
+                     {
+                         elencoLibri=s1.elencoLibriAlfabeticoAutoreTitolo();
+                     for(int i=0;i<elencoLibri.length;i++)
+                     {
+                         System.out.println(elencoLibri[i].toString() +" € " + elencoLibri[i].prezzo());
+                     }
+                     }
+                     catch(EccezionePosizioneNonValida e1)
+                     {
+                         System.out.println(e1.toString());
+                     }
+                     
+                     break;
+                 }
+                 case 9:
+                 {
+                     try
+                     {
+                        s1.esportaLibriCsv(nomeFileCSV);
+                         System.out.println("esportazione avvenuta correttamente!");
+                     }
+                     catch(IOException e1)
+                     {
+                         System.out.println("Impossibile accedere al file, i libri non sono stati salvati.");
+                     }
+                     catch(EccezionePosizioneNonValida | FileExeption  e2)
+                     {
+                         System.out.println(e2.toString());
+                     }
+                 
+                     break;
+                 }
+                 case 10:
+                 {//serializzazione
+                     try 
+                     {
+                         s1.salvaScaffale(nomeFileBinario);
+                         System.out.println("Dati salvati correttamente");
+                     } catch (IOException ex) 
+                     {
+                         System.out.println("Impossibile accedere al file. I dati non sono stati salvati");
+                         
+                     }
+                     break;
+                 }
+             
+             }
+            }
+            catch(InputMismatchException | NumberFormatException e1)
+            {
+                tastiera.nextLine();
+                System.out.println("Input non corretto");
+            }
+           
+            
+        }while(sceltaUtente!=0);
+        
+        */
+        
+        
+       
+        
+        
         do
         {
             sceltaUtente=menu.sceltaMenu();
@@ -93,7 +332,24 @@ public class Main
                  }
                  case 4:
                  {
+                    try
+                    {
+                        System.out.println(p1.visualizzaOrdineAlfabetico());
+                    }
+                    catch(EccezionePosizioneNonValida ex)
+                    {
+                        System.out.println(ex.toString());
+                    }
+                     break;
                 
+                 }
+                 case 5:
+                 {
+                     break;
+                 }
+                 case 6:
+                 {
+                     break;
                  }
             }
              
@@ -101,4 +357,7 @@ public class Main
        
         
     }
+
+
+
 }

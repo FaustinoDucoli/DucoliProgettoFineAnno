@@ -5,6 +5,7 @@
  */
 package com.mycompany._piscina_ducoli;
 
+import eccezioni.EccezionePosizioneNonValida;
 import java.time.LocalDateTime;
 
 /**
@@ -31,6 +32,7 @@ public class Piscina
             {
                 elencoAccessi[i]=new Accessi(a1);
                 this.nAccessiPresenti++;
+                nAccessiPresenti++;
                 return 0;
             }
             
@@ -69,6 +71,71 @@ public class Piscina
             
         }
         return -1;
+    }
+    public String visualizzaOrdineAlfabetico() throws EccezionePosizioneNonValida
+    {
+        int c=0;
+        int n=0;
+        Accessi a;
+        Accessi[] arrayAccessi= new Accessi[nAccessiPresenti];
+        for(int i=0;i<nAccessiPresenti;i++)
+        {
+            a=getAccessi(i);
+            if(a!=null && a.getDataUscita()==null)
+            {
+                arrayAccessi[c]=a;
+                c++;
+            }
+            
+        }
+        for(int i=0;i<arrayAccessi.length;i++)
+            if(arrayAccessi[i]!=null)
+            {
+                n++;
+            }
+            if(n==0)
+            {
+                return "non ci sono clienti";
+            }
+            else
+            {
+                arrayAccessi=Ordinatore.selectionSortAccessi(arrayAccessi);
+                String s="";
+                for(int i=0;i<arrayAccessi.length;i++)
+                {
+                    s=s+arrayAccessi.toString()+"\n";
+                }
+                return s;
+            }
+        
+    }
+    
+    public void setAccessi(Accessi Accesso) throws EccezionePosizioneNonValida 
+    {
+        try
+        {
+            elencoAccessi[nAccessiPresenti]=Accesso;
+            nAccessiPresenti++;
+            System.out.println(nAccessiPresenti);
+        }
+        catch(ArrayIndexOutOfBoundsException e1) 
+       {
+         throw new EccezionePosizioneNonValida(nAccessiPresenti,0);
+       }
+    }
+    public Accessi getAccessi(int a1) throws EccezionePosizioneNonValida
+    {
+        Accessi a;
+        try
+        {
+            a=elencoAccessi[a1];
+            return a;
+        }
+        catch(ArrayIndexOutOfBoundsException e1)
+        {
+            throw new EccezionePosizioneNonValida(a1,0);
+        }
+        
     }
     
    
