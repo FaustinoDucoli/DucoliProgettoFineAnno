@@ -16,16 +16,16 @@ public class Accessi
     private int codiceID;
     private String nome;
     private String Cognome;
-    private LocalDateTime dataIngresso;
-    private LocalDateTime dataUscita;
+    private LocalDate dataIngresso;
+    private LocalDate dataUscita;
     private int corsiaPiscina;
-    private LocalDateTime oraIngresso;
-    private LocalDateTime oraUscita;
+    private LocalTime oraIngresso;
+    private LocalTime oraUscita;
     private final int N_MAX_CORSIE=5;
 
-    public Accessi(int codiceID, String nome, String Cognome)
+    public Accessi(String nome, String Cognome)
     {
-        this.codiceID = codiceID;
+        
         this.nome = nome;
         this.Cognome = Cognome;
     }
@@ -38,6 +38,8 @@ public class Accessi
         this.nome=a1.getNome();
         this.dataIngresso=a1.getDataIngresso();
         this.dataUscita=a1.getDataUscita();
+        this.oraIngresso=a1.getOraIngresso();
+        this.oraUscita=a1.getOraUscita();
     }
     
     public Accessi()
@@ -64,12 +66,12 @@ public class Accessi
         return Cognome;
     }
 
-    public LocalDateTime getDataIngresso() 
+    public LocalDate getDataIngresso() 
     {
         return dataIngresso;
     }
 
-    public LocalDateTime getDataUscita() 
+    public LocalDate getDataUscita() 
     {
         return dataUscita;
     }
@@ -84,12 +86,12 @@ public class Accessi
         return N_MAX_CORSIE;
     }
 
-    public LocalDateTime getOraIngresso() 
+    public LocalTime getOraIngresso() 
     {
         return oraIngresso;
     }
 
-    public LocalDateTime getOraUscita() 
+    public LocalTime getOraUscita() 
     {
         return oraUscita;
     }
@@ -110,12 +112,12 @@ public class Accessi
         this.Cognome = Cognome;
     }
 
-    public void setDataIngresso(LocalDateTime dataIngresso)
+    public void setDataIngresso(LocalDate dataIngresso)
     {
         this.dataIngresso = dataIngresso;
     }
 
-    public void setDataUscita(LocalDateTime dataUscita)
+    public void setDataUscita(LocalDate dataUscita)
     {
         this.dataUscita = dataUscita;
     }
@@ -125,12 +127,12 @@ public class Accessi
         this.corsiaPiscina = corsiaPiscina;
     }
 
-    public void setOraIngresso(LocalDateTime oraIngresso) 
+    public void setOraIngresso(LocalTime oraIngresso) 
     {
         this.oraIngresso = oraIngresso;
     }
 
-    public void setOraUscita(LocalDateTime oraUscita) 
+    public void setOraUscita(LocalTime oraUscita) 
     {
         this.oraUscita = oraUscita;
     }
