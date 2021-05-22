@@ -6,7 +6,9 @@
 package com.mycompany._piscina_ducoli;
 
 /**
- *
+
+ * 
+ * 
  * @author FaustinoDucoli
  */
 public class Ordinatore
@@ -44,7 +46,6 @@ public class Ordinatore
 
         //Applico l'algoritmo 
         //selection sort all'array di copia
-        System.out.println(a.length);
         for (int i=0;i<ordinato.length-1;i++)
         {
             for (int j=i+1;j<ordinato.length;j++)
@@ -53,13 +54,14 @@ public class Ordinatore
                     scambia(ordinato,i,j);
             }
         }
+        return ordinato;
 
-        Accessi[] ordinatoCorretto=new Accessi[a.length];
+        /*Accessi[] ordinatoCorretto=new Accessi[a.length];
         for(int i=0;i<a.length;i++)
         {
             ordinatoCorretto[i]=ordinato[i];
         }
-        return ordinatoCorretto;
+        return ordinatoCorretto;*/
     }
     
     public static int[] selectionSortDecrescente(int[] a)

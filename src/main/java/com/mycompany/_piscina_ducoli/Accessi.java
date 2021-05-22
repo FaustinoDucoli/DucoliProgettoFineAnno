@@ -8,8 +8,19 @@ package com.mycompany._piscina_ducoli;
 import java.time.*;
 
 /**
- *
+ * questa classe rappresenta un accesso alla piscina. I suoi attributi sono:
+ * codiceIdentificativo<br>
+ * nome<br>
+ * cognome<br>
+ * la data di accesso (anno, mese, giorno) <br>
+ * l'ora di accesso <br>
+ * la data di uscita (anno, mese, giorno)<br>
+ * l'ora di uscita <br>
+ * il numero di corsie<br>
+ * N_MAX_CORSIE: una costante che dice il numero massimo di corsie della piscina.<br>
+ * 
  * @author FaustinoDucoli
+ * @version 1.0
  */
 public class Accessi
 {
@@ -22,14 +33,21 @@ public class Accessi
     private LocalTime oraIngresso;
     private LocalTime oraUscita;
     private final int N_MAX_CORSIE=5;
-
+    /**
+     * Costruttore della classe Accessi. Consente di istanziare un nuovo libro.
+     * @param nome nome del cliente
+     * @param Cognome cognome del cliente
+     */
     public Accessi(String nome, String Cognome)
     {
         
         this.nome = nome;
         this.Cognome = Cognome;
     }
-
+    /**
+     * Costruttore di copia della classe Accessi
+     * @param a1 Accesso a1, di cui viene creata una copia.
+     */
     
     public Accessi(Accessi a1)
     {
@@ -144,7 +162,7 @@ public class Accessi
         String s="";
         s+="codice--> "+getCodiceID()+" cognome--> "+getCognome()+" nome--> "+getNome()+" data ingresso--> "+getDataIngresso()+" ora di accesso--> "+getOraIngresso();
         if(getDataUscita()!=null)
-            System.out.print("data di uscita--> " +getDataUscita());
+            System.out.print("data di uscita--> " +getDataUscita()+" ora di uscita--> "+getOraUscita());
         
         return s;
     }
