@@ -32,9 +32,8 @@ public class Accessi
     private int corsiaPiscina;
     private LocalTime oraIngresso;
     private LocalTime oraUscita;
-    private final int N_MAX_CORSIE=5;
     /**
-     * Costruttore della classe Accessi. Consente di istanziare un nuovo libro.
+     * Costruttore della classe Accessi. Consente di istanziare un nuovo accesso.
      * @param nome nome del cliente
      * @param Cognome cognome del cliente
      */
@@ -59,7 +58,11 @@ public class Accessi
         this.oraIngresso=a1.getOraIngresso();
         this.oraUscita=a1.getOraUscita();
     }
-    
+    /**
+     * Costruttore di default della classe Accessi. <br>
+     * Assegna ad ogni parametro un valore di default: <br>
+     * alle stringhe una stringa vuota, agli interi 0.<br>
+     */
     public Accessi()
     {
         codiceID=0;
@@ -68,46 +71,67 @@ public class Accessi
         
         
     }
-
+    /**
+     * Restituisce il codice id di un cliente
+     * @return la variabile codiceID 
+     */
     public int getCodiceID() 
     {
         return codiceID;
     }
+    /**
+     * Restituisce il nome del clienteche si trova nella piscina.
+     * @return la variabile nome
+     */
 
     public String getNome() 
     {
         return nome;
     }
-
+    /**
+     * Restituisce il cognome del cliente che si trova nella piscina.
+     * @return la variabile cognome
+     */
     public String getCognome() 
     {
         return Cognome;
     }
-
+    /**
+     * Restituisce la data di ingresso alla piscina di un cliente (anno, mese, giorno)
+     * @return dataIngresso
+     */
     public LocalDate getDataIngresso() 
     {
         return dataIngresso;
     }
-
+    /**
+     * Restituisce la data di uscita dalla piscina di un cliente (anno, mese, giorno)
+     * @return dataUscita
+     */
     public LocalDate getDataUscita() 
     {
         return dataUscita;
     }
-
+    /**
+     * Restituisce il numero di corsia di un cliente (max 5)
+     * @return corsiaPiscina
+     */
     public int getCorsiaPiscina() 
     {
         return corsiaPiscina;
     }
-
-    public int getN_MAX_CORSIE() 
-    {
-        return N_MAX_CORSIE;
-    }
-
+    /**
+     * Restituisce l'ora di ingresso alla piscina di un cliente 
+     * @return oraIngresso
+     */
     public LocalTime getOraIngresso() 
     {
         return oraIngresso;
     }
+    /**
+     * Restituisce l'ora di uscita alla piscina di un cliente
+     * @return oraUscita
+     */
 
     public LocalTime getOraUscita() 
     {

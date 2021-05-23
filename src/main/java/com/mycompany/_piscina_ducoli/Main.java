@@ -118,17 +118,17 @@ public class Main
                     case 4:
                     {
                          String nome,cognome;
-                         System.out.println("inserisci il nome da eliminare--> ");
+                         System.out.println("inserisci il nome del cliente--> ");
                          nome=tastiera.nextLine();
-                         System.out.println("cognome da eliminare--> ");
+                         System.out.println("inserisci il cognome del cliente--> ");
                          cognome=tastiera.nextLine();
                          int esitoOk;
-                         esitoOk=p1.eliminaAccesso(nome, cognome);
+                         esitoOk=p1.uscitaCliente(nome, cognome);
                          if(esitoOk==0)
-                             System.out.println("eliminazione avvenuta correttamente!");
+                             System.out.println("Uscita avvenuta correttamente!");
                          
                          else
-                             System.out.println("eliminazione non avvenuta correttamente!");
+                             System.out.println("Uscita non avvenuta correttamente!");
 
                          break;
 

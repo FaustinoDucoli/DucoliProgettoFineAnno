@@ -34,6 +34,17 @@ public class Piscina
         elencoAccessi= new Accessi[N_MAX_ACCESSI];
         this.nAccessiPresenti=0;
     }
+
+    public int getN_MAX_ACCESSI()
+    {
+        return N_MAX_ACCESSI;
+    }
+
+    public int getnAccessiPresenti()
+    {
+        return nAccessiPresenti;
+    }
+    
     public String toString()
     {
         String s="";
@@ -94,15 +105,15 @@ public class Piscina
         return s;
     }
     
-    public int eliminaAccesso(String NomeDaEliminare, String CognomeDaEliminare)
+    public int uscitaCliente (String NomeCliente, String CognomeCliente)
     {
         for(int i=0;i<elencoAccessi.length;i++)
         {
             if(elencoAccessi[i]!=null)
             {
-                if(elencoAccessi[i].getNome().equals(NomeDaEliminare))
+                if(elencoAccessi[i].getNome().equals(NomeCliente))
                 {
-                    if(elencoAccessi[i].getCognome().equals(CognomeDaEliminare))
+                    if(elencoAccessi[i].getCognome().equals(CognomeCliente))
                     {
                         elencoAccessi[i].setDataUscita(LocalDate.now());
                         elencoAccessi[i].setOraUscita(LocalTime.now());
@@ -172,7 +183,7 @@ public class Piscina
         
     }
     public void esportaAccessiCsv(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileExeption
-  {
+    {
       TextFile f1= new TextFile(nomeFile, 'W');
       String rigaDaScrivere="";
       Accessi a;
@@ -197,7 +208,7 @@ public class Piscina
       }
       f1.close();
       
-  }
+   }
     public void salvaPiscina(String nomeFile) throws FileNotFoundException, IOException
   {
       FileOutputStream f1=new FileOutputStream(nomeFile);
