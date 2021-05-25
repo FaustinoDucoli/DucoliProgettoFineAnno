@@ -5,10 +5,11 @@
  */
 package com.mycompany._piscina_ducoli;
 
+import java.io.Serializable;
 import java.time.*;
 
 /**
- * questa classe rappresenta un accesso alla piscina. I suoi attributi sono:
+ * questa classe rappresenta un accesso alla piscina. I suoi attributi sono:<br>
  * codiceIdentificativo<br>
  * nome<br>
  * cognome<br>
@@ -22,7 +23,7 @@ import java.time.*;
  * @author FaustinoDucoli
  * @version 1.0
  */
-public class Accessi
+public class Accessi implements  Serializable
 {
     private int codiceID;
     private String nome;
@@ -71,6 +72,7 @@ public class Accessi
         
         
     }
+    //getter
     /**
      * Restituisce il codice id di un cliente
      * @return la variabile codiceID 
@@ -80,7 +82,7 @@ public class Accessi
         return codiceID;
     }
     /**
-     * Restituisce il nome del clienteche si trova nella piscina.
+     * Restituisce il nome del cliente che si trova nella piscina.
      * @return la variabile nome
      */
 
@@ -137,55 +139,85 @@ public class Accessi
     {
         return oraUscita;
     }
-    
-
+    //setter
+    /**
+     * modifica il valore della variabile codiceID di un cliente
+     * @param codiceID  
+     */
     public void setCodiceID(int codiceID) 
     {
         this.codiceID = codiceID;
     }
-
+    /**
+     * modifica il valore della variabile nome di un cliente
+     * @param nome   
+     */
     public void setNome(String nome) 
     {
         this.nome = nome;
     }
-
+    /**
+     * modifica il valore della variabile cognome di un cliente
+     * @param Cognome 
+     */
+    
     public void setCognome(String Cognome)
     {
         this.Cognome = Cognome;
     }
-
+    /**
+     * modifica il valore della variabile dataIngresso di un cliente(anno,mese,giorno)
+     * @param dataIngresso 
+     */
     public void setDataIngresso(LocalDate dataIngresso)
     {
         this.dataIngresso = dataIngresso;
     }
+    /**
+     * modifica il valore della variabile dataUscita di un cliente(anno, mese, giorno)
+     * @param dataUscita 
+     */
+    
 
     public void setDataUscita(LocalDate dataUscita)
     {
         this.dataUscita = dataUscita;
     }
-
+    /**
+     * modifica la variabile corsiaPiscina, cioè la corsia dove si trova un cliente
+     * @param corsiaPiscina 
+     */
     public void setCorsiaPiscina(int corsiaPiscina) 
     {
         this.corsiaPiscina = corsiaPiscina;
     }
-
+    /**
+     * modifica il valore dell'ora di entrata in piscina di un cliente (ora, minuti, secondi)
+     * @param oraIngresso 
+     */
     public void setOraIngresso(LocalTime oraIngresso) 
     {
         this.oraIngresso = oraIngresso;
     }
-
+    /**
+     * modifica il valore della variabile che assegna l'ora (ora, minuti, secondi) di uscita dalla piscina di un cliente
+     * @param oraUscita 
+     */
     public void setOraUscita(LocalTime oraUscita) 
     {
         this.oraUscita = oraUscita;
     }
-   
+    /**
+     * metodo che restituisce una stringa contente tutte le informazioni di un cliente.
+     * @return s una stringa contente tutte le informazioni di un cliente
+     */
     
     
     public String toString()
     {
         String s="";
         s+="codice--> "+getCodiceID()+" cognome--> "+getCognome()+" nome--> "+getNome()+" data ingresso--> "+getDataIngresso()+" ora di accesso--> "+getOraIngresso();
-        if(getDataUscita()!=null)
+        if(getDataUscita()!=null && getOraUscita()!=null)
             System.out.print("data di uscita--> " +getDataUscita()+" ora di uscita--> "+getOraUscita());
         
         return s;

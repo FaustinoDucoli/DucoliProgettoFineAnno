@@ -8,9 +8,11 @@ package com.mycompany._piscina_ducoli;
 import eccezioni.EccezionePosizioneNonValida;
 import file.FileExeption;
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ import java.util.Scanner;
  *
  * @author FaustinoDucoli
  */
-public class Main 
+public class Main implements Serializable
 {
     public static void main(String[] args)
     {
@@ -35,7 +37,7 @@ public class Main
         vociMenu[3] = "Visualizza clienti presenti";
         vociMenu[4] = "Rimuovi cliente";
         vociMenu[5] = "Visualizza elenco clienti in ordine alfabetico";
-        vociMenu[6] = "Esporta libri in formato csv";
+        vociMenu[6] = "Esporta piscina in formato csv";
         vociMenu[7] = "Salva dati";
         
         String nomeFileCSV="Piscina.txt";
@@ -63,9 +65,13 @@ public class Main
      
         do
         {
+            
             try
             {
+                System.out.println("premi un tasto per continuare");
+                tastiera.nextLine();
                 sceltaUtente=menu.sceltaMenu();
+                
              switch(sceltaUtente)
                 {
                     case 0:
@@ -125,10 +131,16 @@ public class Main
                          int esitoOk;
                          esitoOk=p1.uscitaCliente(nome, cognome);
                          if(esitoOk==0)
+                         {
                              System.out.println("Uscita avvenuta correttamente!");
-                         
+                             codice--;
+                         }
+                             
                          else
-                             System.out.println("Uscita non avvenuta correttamente!");
+                         {
+                            System.out.println("Uscita non avvenuta correttamente!"); 
+                         }
+                             
 
                          break;
 
@@ -136,14 +148,37 @@ public class Main
                      case 5:
                     {
                         Accessi[] arrayAccessi;
+                        int anno, mese, giorno;
+                        int ora, minuto;
+                        System.out.println("inserisci la data: giorno--> ");
+                        giorno=tastiera.nextInt();
+                        System.out.println("mese--> ");
+                        mese=tastiera.nextInt();
+                        System.out.println("anno--> ");
+                        anno=tastiera.nextInt();
+                        LocalDate data;
+                        data=LocalDate.of(anno, mese, giorno);
+                        LocalTime orario;
+                        System.out.println("inserisci l'ora--> ");
+                        ora=tastiera.nextInt();
+                        orario=LocalTime.of(ora,0);
 
-                        arrayAccessi=p1.visualizzaOrdineAlfabetico();
+                        arrayAccessi=p1.visualizzaOrdineAlfabeti1co(data, orario);
                         if(arrayAccessi==null)
-                            System.out.println("nessun cliente presente");
-
+                            System.out.println("nessun cliente presente in quest ora");
+                        int a=0;
                         for(int i=0;i<arrayAccessi.length;i++)
                         {
-                            System.out.println(arrayAccessi[i]);
+                            if(arrayAccessi[i]!=null)
+                            {
+                                System.out.println(arrayAccessi[i]);
+                                a++;
+                            }
+                                
+                        }
+                        if(a==0)
+                        {
+                            System.out.println("nessun cliente Presente in questa data e ora");
                         }
 
                         break;
@@ -158,7 +193,7 @@ public class Main
                          }
                          catch(IOException e1)
                          {
-                             System.out.println("Impossibile accedere al file, i libri non sono stati salvati.");
+                             System.out.println("Impossibile accedere al file, piscina non salvata.");
                          }
                          catch(EccezionePosizioneNonValida | FileExeption  e2)
                          {

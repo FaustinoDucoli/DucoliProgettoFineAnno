@@ -50,8 +50,12 @@ public class Ordinatore
         {
             for (int j=i+1;j<ordinato.length;j++)
             {
-                if(ordinato[j].getNome().compareToIgnoreCase(ordinato[i].getNome())<0)
+                if(ordinato[i]!=null)
+                {
+                    if(ordinato[j].getNome().compareToIgnoreCase(ordinato[i].getNome())<0)
                     scambia(ordinato,i,j);
+                }
+                
             }
         }
         return ordinato;
