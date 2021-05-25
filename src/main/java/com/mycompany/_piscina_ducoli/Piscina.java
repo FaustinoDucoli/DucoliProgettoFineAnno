@@ -146,7 +146,7 @@ public class Piscina implements Serializable
     public int uscitaCliente (String NomeCliente, String CognomeCliente)
     {
         if (nAccessiPresenti==0)
-                System.out.println("non ci sono clienti");
+                System.out.println("Uscita non avvenuta correttamente, non ci sono clienti");
         
         for(int i=0;i<elencoAccessi.length;i++)
         {
@@ -175,7 +175,7 @@ public class Piscina implements Serializable
      * @param data giorno mese e anno da confrontare 
      * @param ora ora da confrontare
      */
-    public Accessi[] visualizzaOrdineAlfabeti1co(LocalDate data, LocalTime Ora) 
+    public Accessi[] visualizzaOrdineAlfabetico(LocalDate data, LocalTime Ora) 
     {
         int n=0;
         for (int i=0;i<nAccessiPresenti;i++)

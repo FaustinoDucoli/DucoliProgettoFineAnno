@@ -76,7 +76,7 @@ public class Main implements Serializable
                 {
                     case 0:
                     {
-                        System.out.println("L'applicazione terminerà");
+                        System.out.println("L'applicazione terminerà, arrivederci :-)");
                         break;
                     }
 
@@ -123,6 +123,7 @@ public class Main implements Serializable
                     }
                     case 4:
                     {
+                        
                          String nome,cognome;
                          System.out.println("inserisci il nome del cliente--> ");
                          nome=tastiera.nextLine();
@@ -163,7 +164,7 @@ public class Main implements Serializable
                         ora=tastiera.nextInt();
                         orario=LocalTime.of(ora,0);
 
-                        arrayAccessi=p1.visualizzaOrdineAlfabeti1co(data, orario);
+                        arrayAccessi=p1.visualizzaOrdineAlfabetico(data, orario);
                         if(arrayAccessi==null)
                             System.out.println("nessun cliente presente in quest ora");
                         int a=0;
@@ -186,6 +187,7 @@ public class Main implements Serializable
                     }
                      case 6:
                     {
+                        
                          try
                          {
                             p1.esportaAccessiCsv(nomeFileCSV);

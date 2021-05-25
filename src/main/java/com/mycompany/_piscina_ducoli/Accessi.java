@@ -216,7 +216,7 @@ public class Accessi implements  Serializable
     public String toString()
     {
         String s="";
-        s+="codice--> "+getCodiceID()+" cognome--> "+getCognome()+" nome--> "+getNome()+" data ingresso--> "+getDataIngresso()+" ora di accesso--> "+getOraIngresso();
+        s+="codice--> "+getCodiceID()+" nome--> "+getNome()+" cognome--> "+getCognome()+" data ingresso--> "+getDataIngresso()+" ora di accesso--> "+getOraIngresso();
         if(getDataUscita()!=null && getOraUscita()!=null)
             System.out.print("data di uscita--> " +getDataUscita()+" ora di uscita--> "+getOraUscita());
         
